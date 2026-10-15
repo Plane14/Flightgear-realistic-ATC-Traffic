@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Runtime configuration defaults for the ATC-AI-Traffic addon.
+     Loaded at FlightGear start-up; Config.nas only materialises any node
+     that is still missing, so anything here (and any user override via
+     the property tree or --prop:) always wins over the hard-coded defaults. -->
+<PropertyList>
+  <sim>
+    <atc-ai-traffic>
+      <enabled type="bool">true</enabled>
+      <source type="string">fg-traffic</source>
+      <max-aircraft type="int">60</max-aircraft>
+      <radius-nm type="int">120</radius-nm>
+      <debug type="bool">false</debug>
+      <cruise-fl type="int">180</cruise-fl>
+      <spawn-alt-ft type="int">8000</spawn-alt-ft>
+      <min-sep-nm type="double">3.0</min-sep-nm>
+      <adsb>
+        <enabled type="bool">false</enabled>
+        <api-base type="string">https://api.adsb.lol</api-base>
+        <poll-interval-sec type="int">30</poll-interval-sec>
+      </adsb>
+      <upgrade>
+        <enabled type="bool">true</enabled>
+        <assist-approach type="bool">true</assist-approach>
+        <assist-departure type="bool">false</assist-departure>
+        <range-nm type="double">14</range-nm>
+      </upgrade>
+      <atc>
+        <enabled type="bool">true</enabled>
+        <volume type="double">0.8</volume>
+        <advisory-range-nm type="int">10</advisory-range-nm>
+        <callsign type="string">SHRIMP</callsign>
+      </atc>
+      <sound>
+        <enabled type="bool">true</enabled>
+        <master-volume type="double">0.7</master-volume>
+        <proximity-enabled type="bool">true</proximity-enabled>
+        <max-distance-nm type="double">8.0</max-distance-nm>
+      </sound>
+    </atc-ai-traffic>
+  </sim>
+</PropertyList>

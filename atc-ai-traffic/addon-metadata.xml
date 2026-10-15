@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PropertyList>
+  <meta>
+    <file-type>FlightGear add-on metadata</file-type>
+    <format-version type="int">1</format-version>
+  </meta>
+  <addon>
+    <identifier>org.flightgear.atcai</identifier>
+    <name>ATC-AI-Traffic</name>
+    <version>1.0.0</version>
+    <short-description>Realistic worldwide ATC advisories, enhanced default FlightGear traffic, a generic AI-traffic generator, and optional live adsb.lol traffic.</short-description>
+    <long-description>
+      ATC-AI-Traffic adds a cooperative, read-only ATC advisory layer and
+      realistic AI traffic behavior on top of FlightGear's built-in traffic.
+
+      Three interchangeable traffic sources (property /sim/atc-ai-traffic/source):
+        * fg-traffic (default): enhance aircraft created by FlightGear's own
+          Traffic Manager with proximity sound and ATC advisories, without
+          touching or moving them.
+        * generator: spawn generic worldwide traffic in a ring around you and
+          steer it realistically through the AI flight controls.
+        * adsb: OPTIONAL live real-world traffic from the free adsb.lol API.
+
+      Aircraft are rendered as FlightGear AI objects and driven through
+      controls/flight/* so turns, climbs and descents use the realistic AI
+      flight model. A Canvas radar plus an advisory log are available from the
+      Tools > ATC-AI-Traffic menu. Ships procedurally synthesised radio,
+      engine, gear and proximity sounds.
+    </long-description>
+    <authors>
+      <author>
+        <name>ATC-AI-Traffic contributors</name>
+      </author>
+    </authors>
+    <url>https://wiki.flightgear.org</url>
+    <min-FG-version>2020.3.0</min-FG-version>
+    <max-FG-version>3020.1.0</max-FG-version>
+    <license>GPL v2 or later</license>
+    <tags>
+      <tag>ATC</tag>
+      <tag>AI traffic</tag>
+      <tag>adsb</tag>
+      <tag>audio</tag>
+    </tags>
+  </addon>
+</PropertyList>

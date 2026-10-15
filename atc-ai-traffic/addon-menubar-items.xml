@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Menu items appended to the FlightGear menu bar (Tools > ATC-AI-Traffic).
+     Scripts run in the global namespace; ATCAI is a global namespace, so
+     ATCAI.* resolves at click time. -->
+<PropertyList>
+  <menu>
+    <label>ATC-AI-Traffic</label>
+    <enabled type="bool">true</enabled>
+
+    <item n="0">
+      <label>Toggle Traffic Radar</label>
+      <binding>
+        <command>nasal</command>
+        <script>
+          ATCAI.HUD.toggle();
+        </script>
+      </binding>
+    </item>
+
+    <item n="1">
+      <label>Traffic source: default FlightGear</label>
+      <binding>
+        <command>nasal</command>
+        <script>
+          ATCAI.TrafficManager.setSource('fg-traffic');
+        </script>
+      </binding>
+    </item>
+
+    <item n="2">
+      <label>Traffic source: generator</label>
+      <binding>
+        <command>nasal</command>
+        <script>
+          ATCAI.TrafficManager.setSource('generator');
+        </script>
+      </binding>
+    </item>
+
+    <item n="3">
+      <label>Traffic source: adsb.lol (live)</label>
+      <binding>
+        <command>nasal</command>
+        <script>
+          ATCAI.TrafficManager.setSource('adsb');
+          setprop('/sim/atc-ai-traffic/adsb/enabled', 1);
+        </script>
+      </binding>
+    </item>
+
+    <item n="4">
+      <label>Toggle sound</label>
+      <binding>
+        <command>nasal</command>
+        <script>
+          var n = props.globals.getNode('/sim/atc-ai-traffic/sound/enabled', 1);
+          if (n != nil) {
+            var v = n.getBoolValue();
+            n.setBoolValue(v ? 0 : 1);
+          }
+        </script>
+      </binding>
+    </item>
+
+    <item n="5">
+      <label>Toggle traffic upgrade (ATC approach assist)</label>
+      <binding>
+        <command>nasal</command>
+        <script>
+          var n = props.globals.getNode('/sim/atc-ai-traffic/upgrade/enabled', 1);
+          if (n != nil) {
+            var v = n.getBoolValue();
+            n.setBoolValue(v ? 0 : 1);
+          }
+        </script>
+      </binding>
+    </item>
+
+    <item n="6">
+      <label>About / help</label>
+      <binding>
+        <command>nasal</command>
+        <script>
+          ATCAI.HUD.toggle();
+        </script>
+      </binding>
+    </item>
+  </menu>
+</PropertyList>
