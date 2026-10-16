@@ -14,6 +14,7 @@ var Sounds = {
 
     _hints: "",          # last human-readable diagnostic string
     _masterVol: nil,     # nil = "unset -> follow config"
+    _warnedNoWavs: 0,    # one-time no-wavs hint guard
 
     # Token -> {file, volume, queue} description table. Keys match the
     # .wav basenames bundled in Sounds/ (see Tools/generate_sounds.py).

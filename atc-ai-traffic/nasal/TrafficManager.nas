@@ -100,11 +100,14 @@ var TrafficManager = {
     },
 
     # rebuild _list keeping only entries for which keep(key,ac) is truthy.
+    # Dropped entries have remove() called so their property-tree nodes
+    # and 3D models are cleaned up (prevents leaks, esp. on source switch).
     _rebuildList: func(keep) {
         var h = {};
         foreach (var k; keys(TrafficManager._list)) {
             var ac = TrafficManager._list[k];
             if (keep(k, ac)) h[k] = ac;
+            else if (ac != nil) ac.remove();
         }
         TrafficManager._list = h;
     },
@@ -132,6 +135,9 @@ var TrafficManager = {
     _tickFgTraffic: func() {
         var aiRoot = props.globals.getNode("ai/models", 1);
         if (aiRoot == nil) return;
+        # reset attached tracking at the start so recycled FG aircraft
+        # indices get re-attached instead of being skipped as stale.
+        TrafficManager._attached = {};
         var ck = Config.getInt('max-aircraft'); if (ck < 1) ck = 60;
         var n = 0;
         while (n < ck) {
@@ -146,7 +152,6 @@ var TrafficManager = {
         }
         # drop references whose AI node disappeared
         TrafficManager._rebuildList(func(k, ac) { return ac.node == nil ? 0 : 1; });
-        TrafficManager._attached = {};
         foreach (var k; keys(TrafficManager._list)) {
             var ac = TrafficManager._list[k];
             if (ac != nil and ac.owned == 0) TrafficManager._attached[ac.aiIndex] = 1;
