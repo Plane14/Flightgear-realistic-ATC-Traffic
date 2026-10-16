@@ -197,7 +197,7 @@ var HUD = {
             var dy = d * math.cos(b * 0.017453292519943295);
             var px = cx + dx * scale;
             var py = cy - dy * scale;
-            if (px < 0 or px > W or py < 0 or py > 60) continue;
+            if (px < 0 or px > W or py < 0 or py > H) continue;
             HUD._blip(px, py, 5.0, HUD._colorFor(s.category), "#000000");
             if (d < range * 0.7)
                 HUD._txt(px + 8, py - 4, s.callsign ~ " " ~ (math.round(s.altFt / 100) * 100), 10, [0.81, 0.91, 0.84]);
